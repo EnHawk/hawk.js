@@ -1,6 +1,6 @@
 <div align="center">
   <div>
-    <img src="https://github.com/EnHawk/EnHawk/blob/master/packages/hawk.js/icon.png"
+    <img src="./icon.png"
           alt="pack icon"
           width="50%" 
           height="50%" />
