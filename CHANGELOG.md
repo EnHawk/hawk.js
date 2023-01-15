@@ -22,4 +22,4 @@
 ## Typings
 - Added event typings matching the entered event. (``EventBuilder``)
 
-> If the latest release still had any issue, please [create a new issue](https://github.com/EnHawk/hawk.js/issues)
+> If the latest release still had any issue, please [create a new issue](https://github.com/EnHawk/hawk.js/issues).
