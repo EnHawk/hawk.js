@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-          scope: '@hawkjs'
+          scope: '@EnHawk'
       - run: npm ci
       - run: npm publish
         env:

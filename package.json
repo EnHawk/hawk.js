@@ -10,7 +10,7 @@
     "types": "./typings/index.d.ts"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@hawkjs"
+    "registry": "https://npm.pkg.github.com/@EnHawk"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
