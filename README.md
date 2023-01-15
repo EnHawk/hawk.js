@@ -1,12 +1,15 @@
 <div align="center">
   <div>
-    <img src="./icon.png"
+    <img src="https://github.com/EnHawk/hawk.js/blob/master/icon.png"
           alt="pack icon"
           width="50%" 
           height="50%" />
   </div>
   <h1>Hawk JS</h1>
   <div>
+    <a href="https://github.com/EnHawk/hawk.js/actions/workflows/npm-publish-github-packages.yml">
+      <img src="https://img.shields.io/github/actions/workflow/status/EnHawk/hawk.js/npm-publish-github-packages.yml?label=Build" alt="github build">
+    </a>
     <a href="https://www.npmjs.com/package/hawk.js">
       <img src="https://img.shields.io/npm/v/hawk.js?label=Version" alt="npm version" />
     </a>
