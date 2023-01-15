@@ -6,6 +6,7 @@ import {
 } from "./rawDataTypes";
 
 import Discord from "discord.js";
+
 // Collections
 /**
  * Collection typings for ``client.commands``.
