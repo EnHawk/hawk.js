@@ -26,7 +26,7 @@ export class CommandBuilder {
     public readonly execute: CommandOptions[`execute`] | undefined = undefined;
 
     /**
-     * Returns final data in JSON form.
+     * Returns the final data in JSON form.
      */
     public toJSON(): APICommandOptions {
         return { 
@@ -35,7 +35,7 @@ export class CommandBuilder {
     };
 
     /**
-     * Set the scope of the command.
+     * Set the scope of the command
      * @param scope - The scope of the command.
      */
     public setScope(scope: CommandOptions[`scope`]): this {
@@ -45,7 +45,7 @@ export class CommandBuilder {
     };
 
     /**
-     * (Optional) Set the category of the command.
+     * (Optional) Set the category of the command
      * @param category - The category of the command.
      */
     public setCategory(category: CommandOptions[`category`]): this {
@@ -55,7 +55,7 @@ export class CommandBuilder {
     };
 
     /**
-     * Set the data of the command.
+     * Set the data of the command
      * @param input - The data input of the command.
      */
     public setData(input: CommandOptions[`data`] | ((builder: CommandOptions[`data`]) => CommandOptions[`data`])): this {
@@ -85,12 +85,12 @@ export class EventBuilder {
     public readonly eventName: EventOptions[`eventName`] | undefined = undefined;
 
     /**
-     * The function of the event to be executed.
+     * T
      */
     public readonly eventEmitter: EventOptions[`eventEmitter`] | undefined = undefined;
 
     /**
-     * Returns final data in JSON form.
+     * Returns the final data in JSON form.
      */
     public toJSON(): APIEventOptions {
         return { 
@@ -100,16 +100,30 @@ export class EventBuilder {
 
     /**
      * Set the event listener
-     * @param event - The name of the event
-     * @param listener - The function to be executed
+     * @param event - The name of the event.
+     * @param listener - The function to be executed.
      */
-    public setEvent<E extends keyof Discord.ClientEvents, K extends Discord.ClientEvents[E]>(
-        event: E,
-        listener: ((...args: K) => Discord.Awaitable<any>)
+    public setEvent<E extends EventOptions[`eventName`], K extends EventOptions[`eventEmitter`]>(
+        event: E, 
+        listener: K
     ): this {
         Reflect.set(this, `eventName`, event);
         Reflect.set(this, `eventEmitter`, listener);
 
         return this;
+    };
+
+    /**
+     * Execute the event
+     * @param args - Additional parameter for the matching event
+     */
+    public execute<A extends Discord.ClientEvents[keyof Discord.ClientEvents]>(...args: A): any {
+        switch (typeof this.eventEmitter) {
+            case `function`:
+                this.eventEmitter(args);
+                break;
+            default:
+                throw new Error(`Type of 'eventEmitter' must be a function.`);
+        };
     };
 };

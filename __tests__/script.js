@@ -40,7 +40,7 @@ const ReadyEvent = new EventBuilder()
     /**
      * @returns
      * EventBuilder {
-     *   name: 'ready',
-     *   execute: [AsyncFunction: Execute]
+     *   eventName: 'ready',
+     *   eventEmitter: [AsyncFunction: Execute]
      * }
      */

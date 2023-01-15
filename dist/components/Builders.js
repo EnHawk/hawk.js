@@ -53,6 +53,15 @@ class EventBuilder {
 
         return this;
     };
+    execute(...args) {
+        switch (typeof this.eventEmitter) {
+            case `function`:
+                this.eventEmitter(args);
+                break;
+            default:
+                throw new Error(`Type of 'eventEmitter' must be a function.`);
+        };
+    };
 };
 
 module.exports = {

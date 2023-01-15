@@ -56,7 +56,7 @@ declare class CommandBuilder {
     public readonly execute: CommandOptions[`execute`];
 
     /**
-     * Returns final data in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) form.
+     * Returns the final data in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) form.
      */
     public toJSON(): APICommandOptions;
 
@@ -100,6 +100,7 @@ declare class CommandBuilder {
      * })
      */
     public onExecute(callback: CommandOptions[`execute`]): this;
+
     private _setData;
 }
 
@@ -118,12 +119,12 @@ declare class EventBuilder {
     public readonly eventName: EventOptions[`eventName`];
 
     /**
-     * The function of the event to be executed.
+     * The function of the event to be emitted.
      */
-    public readonly eventEmitter: EventOptions[`eventEmitter`];
+    public readonly eventEmitter: EventOptions[`eventEmitter`]
 
     /**
-     * Returns final data in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) form.
+     * Returns the final data in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) form.
      */
     public toJSON(): APIEventOptions
 
@@ -136,8 +137,14 @@ declare class EventBuilder {
      * ⠀⠀return console.log("Bot is online.")
      * })
      */
-    public setEvent<E extends keyof Discord.ClientEvents, K extends Discord.ClientEvents[E]>(
+    public setEvent<E extends EventOptions[`eventName`], K extends EventOptions[`eventEmitter`]>(
         event: E,
-        listener: ((...args: K) => Discord.Awaitable<any>)
+        listener: K
     ): this;
+
+    /**
+     * Execute the event
+     * @param args - Additional parameter for the matching event
+     */
+    public execute<A extends Discord.ClientEvents[keyof Discord.ClientEvents]>(...args: A): any;
 }
