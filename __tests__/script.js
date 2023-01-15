@@ -15,7 +15,7 @@ const HelloWorldCommand = new CommandBuilder()
     });
 
     /**
-     * @output
+     * @returns
      * CommandBuilder {
      *     scope: 'Global',
      *     category: 'Fun',
@@ -33,13 +33,12 @@ const HelloWorldCommand = new CommandBuilder()
 const { EventBuilder } = require(`../dist/index`);
 
 const ReadyEvent = new EventBuilder()
-    .setName(`ready`)
-    .onExecute(async function Execute() {
+    .setEvent(async function Execute() {
         console.log(`Bot is online.`)
     });
 
     /**
-     * @output
+     * @returns
      * EventBuilder {
      *   name: 'ready',
      *   execute: [AsyncFunction: Execute]

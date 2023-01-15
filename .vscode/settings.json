@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": false,
+    "discord.detailsEditing": "Editing {dir_name}/{file_name}:{current_line}:{current_column}",
+    "editor.formatOnPaste": true
+}

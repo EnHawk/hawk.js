@@ -9,6 +9,6 @@
         "forceConsistentCasingInFileNames": true,
         "strict": true
     },
-    "include": [ "src", "test" ],
+    "include": [ "src", "__tests__" ],
     "exclude": [ "node_modules" ]
 }

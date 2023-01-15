@@ -1,11 +1,5 @@
 import Discord from "discord.js";
-
-export interface CommandOptions {
-    scope: `Global` | `Local`;
-    category?: `Economy` | `Fun` | `Moderation` | `Other`;
-    data: Discord.SlashCommandBuilder;
-    execute: (input: Discord.Interaction) => any;
-};
+import { APICommandOptions,  APIEventOptions,CommandOptions, EventOptions } from "../../typings/rawDataTypes";
 
 /**
  * Typings for Slash Command files.
@@ -29,14 +23,14 @@ export class CommandBuilder {
     /**
      * The function of the command to be executed.
      */
-    public readonly execute: Function | undefined = undefined;
+    public readonly execute: CommandOptions[`execute`] | undefined = undefined;
 
     /**
      * Returns final data in JSON form.
      */
-    public toJSON(): any {
-        return {
-            ...this
+    public toJSON(): APICommandOptions {
+        return { 
+            ...this 
         }
     };
 
@@ -46,7 +40,7 @@ export class CommandBuilder {
      */
     public setScope(scope: CommandOptions[`scope`]): this {
         Reflect.set(this, `scope`, scope);
-        
+
         return this;
     };
 
@@ -72,10 +66,49 @@ export class CommandBuilder {
 
     /**
      * Actions whenever the command is being executed.
-     * @param func - The function to be executed.
+     * @param callback - The function to be executed.
      */
-    public onExecute(func: CommandOptions[`execute`]): this {
-        Reflect.set(this, `execute`, func);
+    public onExecute(callback: CommandOptions[`execute`]): this {
+        Reflect.set(this, `execute`, callback);
+
+        return this;
+    };
+};
+
+/**
+ * Typings for event files.
+ */
+export class EventBuilder {
+    /**
+     * The name of the event.
+     */
+    public readonly eventName: EventOptions[`eventName`] | undefined = undefined;
+
+    /**
+     * The function of the event to be executed.
+     */
+    public readonly eventEmitter: EventOptions[`eventEmitter`] | undefined = undefined;
+
+    /**
+     * Returns final data in JSON form.
+     */
+    public toJSON(): APIEventOptions {
+        return { 
+            ...this 
+        }
+    };
+
+    /**
+     * Set the event listener
+     * @param event - The name of the event
+     * @param listener - The function to be executed
+     */
+    public setEvent<E extends keyof Discord.ClientEvents, K extends Discord.ClientEvents[E]>(
+        event: E,
+        listener: ((...args: K) => Discord.Awaitable<any>)
+    ): this {
+        Reflect.set(this, `eventName`, event);
+        Reflect.set(this, `eventEmitter`, listener);
 
         return this;
     };

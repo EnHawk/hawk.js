@@ -1,20 +1,21 @@
 import {
+    APICommandOptions,
+    APIEventOptions,
     CommandOptions,
     EventOptions
 } from "./rawDataTypes";
 
 import Discord from "discord.js";
-
 // Collections
 /**
  * Collection typings for ``client.commands``.
  */
-declare class ClientCommands extends Discord.Collection<string, CommandOptions> {}
+declare class ClientCommands extends Discord.Collection<string, CommandOptions> { }
 
 /**
  * Collection typings for ``client.events``.
  */
-declare class ClientEvents extends Discord.Collection<string, EventOptions> {}
+declare class ClientEvents extends Discord.Collection<string, EventOptions> { }
 
 // Builders
 /**
@@ -41,7 +42,7 @@ declare class CommandBuilder {
     /**
      * The category of the command. (Optional)
      */
-    public readonly category?: CommandOptions[`category`];
+    public readonly category: CommandOptions[`category`];
 
     /**
      * The data of the command.
@@ -56,7 +57,7 @@ declare class CommandBuilder {
     /**
      * Returns final data in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) form.
      */
-    public toJSON(): any;
+    public toJSON(): APICommandOptions;
 
     /**
      * Set the scope of the command.
@@ -91,13 +92,13 @@ declare class CommandBuilder {
 
     /**
      * Actions whenever the command is being executed.
-     * @param func - The function to be executed.
+     * @param callback - The function to be executed.
      * @example 
      * .onExecute(async interaction => {
      * ⠀⠀await interaction.reply("Hello World!") 
      * })
      */
-    public onExecute(func: CommandOptions[`execute`]): this;
+    public onExecute(callback: CommandOptions[`execute`]): this;
     private _setData;
 }
 
@@ -105,8 +106,7 @@ declare class CommandBuilder {
  * Typings for event files.
  * @example
  * const ReadyEvent = new EventBuilder()
- * ⠀⠀.setName("ready")
- * ⠀⠀.onExecute(() => {
+ * ⠀⠀.setEvent('ready', () => {
  * ⠀⠀⠀⠀return console.log("Bot is online.")
  * ⠀⠀})
  */
@@ -114,33 +114,29 @@ declare class EventBuilder {
     /**
      * The name of the event.
      */
-    public readonly name: EventOptions[`name`];
-    
+    public readonly eventName: EventOptions[`eventName`];
+
     /**
      * The function of the event to be executed.
      */
-    public readonly execute: EventOptions[`execute`];
+    public readonly eventEmitter: EventOptions[`eventEmitter`];
 
     /**
      * Returns final data in [JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) form.
      */
-    public toJSON(): any;
-
-    /**
-     * Set the name of the event.
-     * @param name - The name of the event.
-     * @example
-     * .setName("ready")
-     */
-    public setName(name: EventOptions[`name`]): this;
+    public toJSON(): APIEventOptions
 
     /**
      * Actions whenever the event is being executed.
-     * @param func - The function to be executed.
+     * @param event - The name of the event.
+     * @param listener - The function to be executed.
      * @example
-     * .onExecute(() => {
+     * .setEvent('ready', () => {
      * ⠀⠀return console.log("Bot is online.")
      * })
      */
-    public onExecute(func: EventOptions[`execute`]): this;
+    public setEvent<E extends keyof Discord.ClientEvents, K extends Discord.ClientEvents[E]>(
+        event: E,
+        listener: ((...args: K) => Discord.Awaitable<any>)
+    ): this;
 }

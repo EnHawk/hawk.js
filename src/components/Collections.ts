@@ -1,6 +1,5 @@
 import Discord from "discord.js";
-import { CommandOptions } from "./Command";
-import { EventOptions } from "./Event";
+import { CommandOptions, EventOptions } from "../../typings/rawDataTypes";
 
 /**
  * Collection typings for ``client.commands``.

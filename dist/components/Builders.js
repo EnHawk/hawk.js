@@ -7,7 +7,7 @@ class CommandBuilder {
     execute;
     toJSON() {
         return {
-            ...this 
+            ...this
         }
     };
     setScope(scope) {
@@ -25,13 +25,13 @@ class CommandBuilder {
 
         return this;
     };
-    onExecute(input) {
-        Reflect.set(this, `execute`, input);
+    onExecute(callback) {
+        Reflect.set(this, `execute`, callback);
 
         return this;
     };
     _setData(input, Instance) {
-        const result = typeof input === "function" ? input(new Instance()) : input;
+        const result = typeof input === `function` ? input(new Instance()) : input;
 
         Reflect.set(this, `data`, result);
 
@@ -40,20 +40,16 @@ class CommandBuilder {
 };
 
 class EventBuilder {
-    name;
-    execute;
+    eventName;
+    eventEmitter;
     toJSON() {
         return {
             ...this
         }
     };
-    setName(name) {
-        Reflect.set(this, `name`, name);
-
-        return this;
-    };
-    onExecute(func) {
-        Reflect.set(this, `execute`, func);
+    setEvent(event, listener) {
+        Reflect.set(this, `eventName`, event);
+        Reflect.set(this, `eventEmitter`, listener);
 
         return this;
     };
