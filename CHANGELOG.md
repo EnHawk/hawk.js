@@ -11,7 +11,7 @@
 ## Typings
 - Advanced descriptions in each of the classes to guide users clearly.
 
-# [hawk.js@1.2.6](https://www.npmjs.com/package/hawk.js/v/1.2.6) - (2023-1-15)
+# [hawk.js@1.2.7](https://www.npmjs.com/package/hawk.js/v/1.2.7) - (2023-1-15)
 
 ## Bug Fixes
 - Fixed ``.execute()`` not working. (``EventBuilder``)
