@@ -14,6 +14,7 @@ const HelloWorldCommand = new CommandBuilder()
         await interaction.reply(`Hello World!`)
     });
 
+console.log(HelloWorldCommand);
     /**
      * @returns
      * CommandBuilder {
@@ -33,10 +34,11 @@ const HelloWorldCommand = new CommandBuilder()
 const { EventBuilder } = require(`../dist/index`);
 
 const ReadyEvent = new EventBuilder()
-    .setEvent(async function Execute() {
+    .setEvent(`ready`, async function Execute() {
         console.log(`Bot is online.`)
     });
 
+console.log(ReadyEvent);
     /**
      * @returns
      * EventBuilder {
