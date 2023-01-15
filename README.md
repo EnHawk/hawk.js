@@ -8,7 +8,7 @@
   <h1>Hawk JS</h1>
   <div>
     <a href="https://www.npmjs.com/package/hawk.js">
-      <img src="https://img.shields.io/npm/v/hawk.js?label=NPM" alt="npm version" />
+      <img src="https://img.shields.io/npm/v/hawk.js?label=Version" alt="npm version" />
     </a>
     <a href="https://www.npmjs.com/package/hawk.js">
       <img src="https://img.shields.io/npm/dt/hawk.js?label=Downloads" alt="npm downloads" />
