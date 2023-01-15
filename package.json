@@ -9,6 +9,9 @@
     "require": "./dist/index.js",
     "types": "./typings/index.d.ts"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
