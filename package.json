@@ -1,5 +1,5 @@
 {
-  "name": "hawk.js",
+  "name": "@enhawk/hawk.js",
   "version": "1.2.7",
   "description": "Advanced DJS Bot Typings, Builders, and more!",
   "main": "dist/index.js",
