@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -23,9 +24,10 @@ jobs:
         run: npm ci
 
       - name: Test package
-        run: npm test
+        run: npm run test:dev
 
   publish-npm:
+    name: Publish
     needs: build
     runs-on: ubuntu-latest
     steps:
