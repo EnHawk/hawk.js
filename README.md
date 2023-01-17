@@ -8,7 +8,7 @@
   <h1>Hawk JS</h1>
   <div>
     <a href="https://github.com/EnHawk/hawk.js/actions/workflows/tests.yml">
-      <img src="https://github.com/EnHawk/hawk.js/actions/workflows/tests.yml/badge.svg" alt="github tests">
+      <img src="https://github.com/EnHawk/hawk.js/actions/workflows/tests.yml/badge.svg?branch=master" alt="github tests" />
     </a>
     <a href="https://www.npmjs.com/package/hawk.js">
       <img src="https://img.shields.io/npm/v/hawk.js?label=Version" alt="npm version" />
