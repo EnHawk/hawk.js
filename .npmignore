@@ -1,4 +1,5 @@
 src/
+.cache/
 __tests__/
 .github/
 .vscode/
