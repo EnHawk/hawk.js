@@ -7,14 +7,21 @@
   </div>
   <h1>Hawk JS</h1>
   <div>
+    <a href="https://github.com/EnHawk/hawk.js/blob/master/LICENSE">
+      <img src="https://img.shields.io/npm/l/hawk.js?label=License" alt="license" />
+    </a>
     <a href="https://github.com/EnHawk/hawk.js/actions/workflows/tests.yml">
-      <img src="https://github.com/EnHawk/hawk.js/actions/workflows/tests.yml/badge.svg?branch=master" alt="github tests" />
+      <img src="https://github.com/EnHawk/hawk.js/actions/workflows/tests.yml/badge.svg?branch=master"
+            alt="github tests" />
+    <a href="https://github.com/EnHawk/hawk.js/pkgs/npm/hawk.js">
+      <img src="https://img.shields.io/github/package-json/v/EnHawk/hawk.js?label=Version&logo=github"
+            alt="github packages downloads" />
     </a>
     <a href="https://www.npmjs.com/package/hawk.js">
-      <img src="https://img.shields.io/npm/v/hawk.js?label=Version" alt="npm version" />
+      <img src="https://img.shields.io/npm/v/hawk.js?label=Version&logo=npm" alt="npm version" />
     </a>
     <a href="https://www.npmjs.com/package/hawk.js">
-      <img src="https://img.shields.io/npm/dt/hawk.js?label=Downloads" alt="npm downloads" />
+      <img src="https://img.shields.io/npm/dt/hawk.js?label=Downloads&logo=docusign" alt="npm downloads" />
     </a>
   </div>
 </div>
